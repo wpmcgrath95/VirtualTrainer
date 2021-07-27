@@ -1,4 +1,4 @@
-# PythonProject
+# Virtual Trainer Project
 
 # Setup for developement:
 
