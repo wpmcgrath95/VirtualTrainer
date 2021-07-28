@@ -22,11 +22,9 @@
             <p style="text-align: center; color: white;">
                 What is QTrainer?
                 <br>
-                QTrainer is a blalalalallal
-                Say something smart here
+                No one wants to get injured while working out to get healthier. That's why QTrainer is your answer to a more personalized experience when working out from home. QTrainier is a virtual personal trainer that can analyze your moves as you workout and provide feedback on your form. If QTrainer finds that your form could use some work, it tells you what it is you can improve to make your workout a safe one!
             </p>
         </div><br>
-<<<<<<< Updated upstream
         <div class="row" style="color: white; font-size:x-large; text-align: center;">
             Team Members
             <div class="row" style="color: white; font-size:large; text-align: center;">
@@ -47,14 +45,6 @@
                     <img src="Team\Will.JPG" style="width:250px;height:250px; display: block;">
                 </div>
             </div>
-=======
-        <div class="row" style="color: white; font-size:x-large;">
-            <div class="col" style="text-align:center">Carla Diaz</div>
-            <div class="col" style="text-align:center">Greg Vargas</div>
-            <div class="col" style="text-align:center">Julian Velandia Arango</div>
-            <div class="col" style="text-align:center">William McGrath</div>
-            <div class="col-1"></div>
->>>>>>> Stashed changes
         </div>
     </div>
 
@@ -70,13 +60,13 @@
     <div class="container" style="text-align: center;">
         <input type="file" id="actual-btn" accept=".mp4" hidden/>
         <label for="actual-btn">Upload Video</label>
-        <input type="file" id="actual-btn" hidden/>
+        <input id="startButton" hidden/>
         <label for="actual-btn" style="background-color: #a00000;">Record Video</label>
     </div>
 
     <br><br>
     <div class="container" style="color: white;">
-        <br> *Something about qualcomm IP here*
+        <br> *Qualcomm Confidential*
     </div>
 
     <br><br><br>
@@ -113,6 +103,51 @@
         // });
         alert("python test not working yet");
     }
+
+    function startRecording(stream, lengthInMS) {
+        let recorder = new MediaRecorder(stream);
+        let data = [];
+
+        recorder.ondataavailable = event => data.push(event.data);
+        recorder.start();
+        log(recorder.state + " for " + (lengthInMS/1000) + " seconds...");
+
+        let stopped = new Promise((resolve, reject) => {
+            recorder.onstop = resolve;
+            recorder.onerror = event => reject(event.name);
+        });
+
+        let recorded = wait(lengthInMS).then(
+            () => recorder.state == "recording" && recorder.stop()
+        );
+
+        return Promise.all([
+            stopped,
+            recorded
+        ])
+        .then(() => data);
+    }
+    startButton.addEventListener("click", function() {
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+        }).then(stream => {
+            preview.srcObject = stream;
+            downloadButton.href = stream;
+            preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+            return new Promise(resolve => preview.onplaying = resolve);
+        }).then(() => startRecording(preview.captureStream(), recordingTimeMS))
+        .then (recordedChunks => {
+            let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+            recording.src = URL.createObjectURL(recordedBlob);
+            downloadButton.href = recording.src;
+            downloadButton.download = "RecordedVideo.webm";
+
+            log("Successfully recorded " + recordedBlob.size + " bytes of " +
+                recordedBlob.type + " media.");
+        })
+        .catch(log);
+        }, false);
 </script>
 
 <style>
