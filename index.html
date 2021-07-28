@@ -5,18 +5,6 @@
 
     <title>QTrainer</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    <link rel="stylesheet" href="css/aos.css">
-
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -31,26 +19,52 @@
                     QHacks 2021 - QTrainer
                 </h1>
             </div>
+            <p style="text-align: center; color: white;">
+                What is QTrainer?
+                <br>
+                QTrainer is a blalalalallal
+                Say something smart here
+            </p>
         </div><br>
-        <div class="row" style="color: white; font-size:x-large;">
-            <div class="col" style="text-align:center">Carla Diaz</div>
-            <div class="col" style="text-align:center">Greg Vargas</div>
-            <div class="col" style="text-align:center">Julian Velandia</div>
-            <div class="col" style="text-align:center">William McGrath</div>
-            <div class="col-1"></div>
+        <div class="row" style="color: white; font-size:x-large; text-align: center;">
+            Team Members
+            <div class="row" style="color: white; font-size:large; text-align: center;">
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Carla Diaz
+                    <img src="Team\Carla.JPG" style="width:200px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Greg Vargas
+                    <img src="Team\Greg.png" style="width:190px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Julian Velandia Arango
+                    <img src="Team\Julian.JPG" style="width:200px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    William McGrath
+                    <img src="Team\Will.JPG" style="width:200px;height:250px; display: block;">
+                </div>
+            </div>
         </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 my-auto">
+                <h1 style="text-align:center;color: white;" class="center-block">
+                    Try Out QTrainer Below!
+                </h1>
+            </div>
+        </div><br>
+    <div class="container" style="text-align: center;">
+        <button class="button" onclick="somefunction()">Button1</button>
+        <button class="button" onclick="pythonTest()">Button2</button>
     </div>
 
     <br><br>
     <div class="container" style="color: white;">
-        <div class="row">
-            <div class="col-6">
-                <ul>
-                    <li><a style="color: white;" href="">Button1</a></li>
-                    <li><a style="color: white;" href="">Button2</a></li>
-                </ul>
-            </div>
-        </div>
         <br> *Something about qualcomm IP here*
     </div>
 
@@ -65,21 +79,44 @@
             </div>
         </div>
     </footer>
-
-    <!-- <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.countdown.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/bootstrap-datepicker.min.js"></script>
-    <script src="js/aos.js"></script>
-
-    <script src="js/main.js"></script> -->
-
 </body>
+
+<script>
+    function somefunction()
+    {
+        alert("you pressed the button dummy");
+    }
+
+    function pythonTest()
+    {
+        // $.ajax(
+        // {
+        // type: "POST",
+        // url: "python/test.py",
+        // // data: output,
+        // dataType: "html",
+        // success: function (msg)
+        //     {
+        //         alert("script ran ok");
+        //     },
+        // });
+        alert("python test not working yet");
+    }
+</script>
+
+<style>
+    .button {
+      background-color: #292F32;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
 
 </html>
