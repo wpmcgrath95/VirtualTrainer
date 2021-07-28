@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>QTrainer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body style="background-color: #005DAA;">
+
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 my-auto">
+                <h1 style="text-align:center;color: white;" class="center-block">
+                    QHacks 2021 - QTrainer
+                </h1>
+            </div>
+            <p style="text-align: center; color: white;">
+                What is QTrainer?
+                <br>
+                No one wants to get injured while working out to get healthier. That's why QTrainer is your answer to a more personalized experience when working out from home. QTrainier is a virtual personal trainer that can analyze your moves as you workout and provide feedback on your form. If QTrainer finds that your form could use some work, it tells you what it is you can improve to make your workout a safe one!
+            </p>
+        </div><br>
+        <div class="row" style="color: white; font-size:x-large; text-align: center;">
+            Team Members
+            <div class="row" style="color: white; font-size:large; text-align: center;">
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Carla Diaz
+                    <img src="Team\Carla.JPG" style="width:200px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Greg Vargas
+                    <img src="Team\Greg.png" style="width:190px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    Julian Velandia Arango
+                    <img src="Team\Julian.JPG" style="width:230px;height:250px; display: block;">
+                </div>
+                <div class="col" style="text-align:center; display: inline-block;">
+                    William McGrath
+                    <img src="Team\Will.JPG" style="width:250px;height:250px; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 my-auto">
+                <h1 style="text-align:center;color: white;" class="center-block">
+                    Try Out QTrainer Below!
+                </h1>
+            </div>
+        </div><br>
+    <div class="container" style="text-align: center;">
+        <input type="file" id="actual-btn" accept=".mp4" hidden/>
+        <label for="actual-btn">Upload Video</label>
+        <input id="startButton" hidden/>
+        <label for="actual-btn" style="background-color: #a00000;">Record Video</label>
+    </div>
+
+    <br><br>
+    <div class="container" style="color: white;">
+        <br> *Qualcomm Confidential*
+    </div>
+
+    <br><br><br>
+
+    <div class="site-section"></div>
+    <div class="site-section"></div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    function somefunction()
+    {
+        alert("you pressed the button dummy");
+    }
+
+    function pythonTest()
+    {
+        // $.ajax(
+        // {
+        // type: "POST",
+        // url: "python/test.py",
+        // // data: output,
+        // dataType: "html",
+        // success: function (msg)
+        //     {
+        //         alert("script ran ok");
+        //     },
+        // });
+        alert("python test not working yet");
+    }
+
+    function startRecording(stream, lengthInMS) {
+        let recorder = new MediaRecorder(stream);
+        let data = [];
+
+        recorder.ondataavailable = event => data.push(event.data);
+        recorder.start();
+        log(recorder.state + " for " + (lengthInMS/1000) + " seconds...");
+
+        let stopped = new Promise((resolve, reject) => {
+            recorder.onstop = resolve;
+            recorder.onerror = event => reject(event.name);
+        });
+
+        let recorded = wait(lengthInMS).then(
+            () => recorder.state == "recording" && recorder.stop()
+        );
+
+        return Promise.all([
+            stopped,
+            recorded
+        ])
+        .then(() => data);
+    }
+    startButton.addEventListener("click", function() {
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: true
+        }).then(stream => {
+            preview.srcObject = stream;
+            downloadButton.href = stream;
+            preview.captureStream = preview.captureStream || preview.mozCaptureStream;
+            return new Promise(resolve => preview.onplaying = resolve);
+        }).then(() => startRecording(preview.captureStream(), recordingTimeMS))
+        .then (recordedChunks => {
+            let recordedBlob = new Blob(recordedChunks, { type: "video/webm" });
+            recording.src = URL.createObjectURL(recordedBlob);
+            downloadButton.href = recording.src;
+            downloadButton.download = "RecordedVideo.webm";
+
+            log("Successfully recorded " + recordedBlob.size + " bytes of " +
+                recordedBlob.type + " media.");
+        })
+        .catch(log);
+        }, false);
+</script>
+
+<style>
+    .button {
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    label {
+        background-color: #292F32;
+        color: white;
+        padding: 0.5rem;
+        font-family: sans-serif;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+    </style>
+
+</html>
