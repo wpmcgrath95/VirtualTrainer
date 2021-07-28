@@ -16,5 +16,3 @@
 # Run `pre-commit` locally.
 
 `pre-commit run --all-files`
-
-# Hi I'm Greg
