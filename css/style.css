@@ -1,12 +1,5 @@
   
 /* Base */
-body {
-    line-height: 1.7;
-    color: #cfcfd1;
-    font-weight: 300;
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
-  
   ::-moz-selection {
     background: #000;
     color: #fff; }
@@ -612,7 +605,6 @@ body {
       background: -webkit-linear-gradient(left, #c70039, #ff5733 70%);
       background: -o-linear-gradient(left, #c70039, #ff5733 70%);
       background: linear-gradient(to right, #c70039, #ff5733 70%);
-      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; }
       @media (min-width: 992px) {
         .site-hero h1 {
