@@ -4,7 +4,9 @@
 
 - Setup a python 3.x venv (usually in `.venv`)
   - You can run `./scripts/create-venv.sh` to generate one
-- `pip3 install --upgrade pip`
+  - virtual environment called *env*
+- `python -m pip install --upgrade pip-tools`
+- `pip3 install --upgrade pip` if need be 
 - Install dev requirements `pip3 install -r requirements.dev.txt`
 - Install requirements `pip3 install -r requirements.txt`
 - `pre-commit install`
