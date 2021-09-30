@@ -85,7 +85,7 @@ jupyter-core==4.6.3
     #   nbconvert
     #   nbformat
     #   notebook
-jupyterlab==2.2.6
+jupyterlab==2.2.10
     # via -r requirements.dev.in
 jupyterlab-server==1.2.0
     # via jupyterlab
@@ -206,7 +206,7 @@ typed-ast==1.4.1
     # via black
 typing-extensions==3.7.4.3
     # via black
-urllib3==1.26.5
+urllib3==1.25.11
     # via requests
 virtualenv==20.0.31
     # via pre-commit
